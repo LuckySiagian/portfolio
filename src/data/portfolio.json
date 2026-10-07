@@ -482,9 +482,8 @@
         "TypeScript",
         "Docker"
       ],
-      "githubUrl": "",
+      "githubUrl": "https://github.com/LuckySiagian/lucky-mart",
       "demoUrl": "",
-      "linkNote": "Repository not public yet",
       "architecture": {
         "flows": [
           {
