@@ -99,7 +99,7 @@ export default function ScreenshotCarousel({ shots, title }) {
 
       <div className="mt-2 flex items-start justify-between gap-3">
         <p className="font-mono text-xs text-faint" aria-live={multiple ? "polite" : undefined}>
-          {current.caption} <span className="text-faint/80">· click to enlarge</span>
+          {current.caption} <span>· click to enlarge</span>
         </p>
         {multiple && (
           <div className="flex shrink-0 gap-1.5 pt-1">

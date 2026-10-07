@@ -6,8 +6,12 @@ const STORAGE_KEY = "portfolio-theme";
 function getInitialTheme() {
   if (typeof window === "undefined") return "dark";
 
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === "light" || stored === "dark") return stored;
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark") return stored;
+  } catch {
+    // Storage blocked (e.g. some private modes): fall back to the system theme.
+  }
 
   const prefersLight = window.matchMedia(
     "(prefers-color-scheme: light)"
@@ -31,7 +35,11 @@ export function useTheme() {
     const root = document.documentElement;
     root.classList.toggle("light", theme === "light");
     root.style.colorScheme = theme;
-    window.localStorage.setItem(STORAGE_KEY, theme);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      // Ignore: the theme still applies for this visit.
+    }
   }, [theme]);
 
   const toggle = () =>

@@ -158,7 +158,7 @@ export default function Hero() {
         </div>
 
         {/* ---- Right: photo card ---- */}
-        <div className="mx-auto w-full max-w-sm lg:mx-0 lg:max-w-md lg:justify-self-end" data-reveal>
+        <div className="mx-auto w-full max-w-sm lg:mx-0 lg:max-w-md lg:justify-self-end">
           <div
             ref={ref}
             onMouseMove={onMouseMove}
