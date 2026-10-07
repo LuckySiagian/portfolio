@@ -2,11 +2,13 @@ import React, { useId, useRef, useState } from "react";
 import SectionHeading from "./ui/SectionHeading.jsx";
 import Tag from "./ui/Tag.jsx";
 import ArchitectureDiagram from "./ui/ArchitectureDiagram.jsx";
+import Lightbox from "./ui/Lightbox.jsx";
 import { ArrowUpRightIcon, GitHubIcon, LockIcon } from "./ui/Icons.jsx";
 import { usePortfolio } from "../context/PortfolioContext.jsx";
 
 const TABS = [
   { id: "overview", label: "Overview" },
+  { id: "screenshots", label: "Screenshots" },
   { id: "architecture", label: "Architecture" },
   { id: "features", label: "Features" },
   { id: "contribution", label: "My contribution" },
@@ -55,7 +57,11 @@ function ProjectTabs({ project }) {
   const baseId = useId();
   const [active, setActive] = useState("overview");
   const tabRefs = useRef([]);
-  const tabs = TABS.filter((t) => t.id !== "architecture" || project.architecture);
+  const tabs = TABS.filter((t) => {
+    if (t.id === "architecture") return Boolean(project.architecture);
+    if (t.id === "screenshots") return project.screenshots?.length > 0;
+    return true;
+  });
 
   const onKeyDown = (e, index) => {
     let next = null;
@@ -113,6 +119,7 @@ function ProjectTabs({ project }) {
           className="pt-5 focus-visible:outline-none"
         >
           {tab.id === "overview" && <OverviewPanel project={project} />}
+          {tab.id === "screenshots" && <ScreenshotsPanel project={project} />}
           {tab.id === "architecture" && (
             <ArchitectureDiagram architecture={project.architecture} title={project.title} />
           )}
@@ -146,6 +153,44 @@ function ProjectTabs({ project }) {
         </div>
       ))}
     </div>
+  );
+}
+
+function ScreenshotsPanel({ project }) {
+  const [openIndex, setOpenIndex] = useState(null);
+  const shots = project.screenshots;
+
+  return (
+    <>
+      <ul className={`grid gap-4 ${shots.length > 1 ? "sm:grid-cols-2" : ""}`}>
+        {shots.map((shot, i) => (
+          <li key={shot.src}>
+            <button
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              className="group block w-full overflow-hidden rounded-xl border border-line bg-slate-950 text-left transition-colors hover:border-cyan/50"
+              aria-label={`View larger: ${shot.alt}`}
+            >
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                loading="lazy"
+                decoding="async"
+                className="aspect-video w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
+              />
+            </button>
+            {shot.caption && <p className="mt-2 font-mono text-xs text-faint">{shot.caption}</p>}
+          </li>
+        ))}
+      </ul>
+      <Lightbox
+        open={openIndex !== null}
+        onClose={() => setOpenIndex(null)}
+        images={shots}
+        startIndex={openIndex ?? 0}
+        title={project.title}
+      />
+    </>
   );
 }
 

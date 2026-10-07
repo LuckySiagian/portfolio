@@ -309,7 +309,14 @@
             "note": "Backend metrics are exposed at /metrics for Prometheus."
           }
         ]
-      }
+      },
+      "screenshots": [
+        {
+          "file": "spmt.webp",
+          "alt": "Network topology view of the monitoring dashboard with service status counters and a live nodes feed",
+          "caption": "Network topology view of the monitoring dashboard"
+        }
+      ]
     },
     {
       "tier": "featured",
@@ -485,7 +492,14 @@
             "note": "Runs locally with Docker Compose."
           }
         ]
-      }
+      },
+      "screenshots": [
+        {
+          "file": "lucky-mart.webp",
+          "alt": "Lucky Mart customer web store home page",
+          "caption": "Customer web store — work in progress"
+        }
+      ]
     },
     {
       "tier": "other",
@@ -553,7 +567,8 @@
         "width": 1400,
         "height": 1867
       },
-      "location": "Belawan, North Sumatra"
+      "location": "Belawan, North Sumatra",
+      "result": "Internship result: Very Good (Baik Sekali) — average score 94.35 / 100"
     }
   ],
   "education": {
@@ -597,5 +612,47 @@
       "Junior Software Engineer",
       "Junior DevOps / DevOps-related roles"
     ]
-  }
+  },
+  "certificates": [
+    {
+      "title": "Internship Certificate",
+      "issuer": "PT Pelindo Multi Terminal",
+      "date": "Jul 2026",
+      "detail": "Internship from 2 Feb to 10 Jul 2026. Result: Very Good, average score 94.35 / 100.",
+      "thumb": "/images/certificates/pelindo-internship-certificate-thumb.webp",
+      "thumbWidth": 480,
+      "thumbHeight": 679,
+      "pages": [
+        {
+          "src": "/images/certificates/pelindo-internship-certificate.webp",
+          "width": 1400,
+          "height": 1981,
+          "alt": "Internship certificate from PT Pelindo Multi Terminal for Lewi Lucky Siagian, 2 February to 10 July 2026, result Very Good"
+        },
+        {
+          "src": "/images/certificates/pelindo-internship-grades.webp",
+          "width": 1400,
+          "height": 1981,
+          "alt": "Internship grade sheet with an average score of 94.35, grade A"
+        }
+      ]
+    },
+    {
+      "title": "Student Leadership Program 2024/2025",
+      "issuer": "Institut Teknologi Del",
+      "date": "Sep 2025",
+      "detail": "Certificate of appreciation for taking part in the Student Leadership Program, academic year 2024/2025.",
+      "thumb": "/images/certificates/student-leadership-program-thumb.webp",
+      "thumbWidth": 480,
+      "thumbHeight": 346,
+      "pages": [
+        {
+          "src": "/images/certificates/student-leadership-program.webp",
+          "width": 1400,
+          "height": 1011,
+          "alt": "Certificate of appreciation from Institut Teknologi Del for the Student Leadership Program 2024/2025"
+        }
+      ]
+    }
+  ]
 }

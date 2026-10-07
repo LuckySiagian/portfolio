@@ -1,6 +1,7 @@
 import React from "react";
 import SectionHeading from "./ui/SectionHeading.jsx";
 import Tag from "./ui/Tag.jsx";
+import CertificateList from "./ui/CertificateList.jsx";
 import { usePortfolio } from "../context/PortfolioContext.jsx";
 
 function PeriodBadge({ children }) {
@@ -12,7 +13,7 @@ function PeriodBadge({ children }) {
 }
 
 export default function Experience() {
-  const { experience, education, organizations } = usePortfolio();
+  const { experience, education, organizations, certificates } = usePortfolio();
 
   return (
     <section
@@ -52,6 +53,13 @@ export default function Experience() {
                 </div>
 
                 {job.summary && <p className="leading-relaxed text-muted">{job.summary}</p>}
+
+                {job.result && (
+                  <p className="inline-flex items-center gap-2 rounded-lg border border-ok/30 bg-ok/10 px-3 py-2 font-mono text-xs text-ok">
+                    <span aria-hidden="true">✓</span>
+                    {job.result}
+                  </p>
+                )}
 
                 {job.bullets?.length > 0 && (
                   <ul className="space-y-3">
@@ -119,6 +127,9 @@ export default function Experience() {
               </p>
             </article>
           )}
+
+          {/* Certificates */}
+          <CertificateList certificates={certificates} />
 
           {/* Organizational activities */}
           {organizations?.length > 0 && (

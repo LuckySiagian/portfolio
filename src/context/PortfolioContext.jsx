@@ -9,6 +9,7 @@ import {
   education,
   organizations,
   contact,
+  certificates,
   hasResume,
 } from "../data/portfolio";
 
@@ -30,6 +31,7 @@ const value = {
   education,
   organizations,
   contact,
+  certificates,
   hasResume,
 };
 

@@ -82,6 +82,16 @@ All copy, links, projects, skills and experience live in
 Architecture diagrams are generated from each project's `architecture.flows`
 data — no image needed.
 
+### Project screenshots
+
+Drop a screenshot into `public/` with the project's name — `spmt.png` or
+`lucky mart.png` — then run `npm run dev`, `npm run build` or `npm run images`.
+It is resized to max 1600px, saved as WebP in `public/images/projects/`
+(e.g. `lucky-mart.webp`), and the original PNG is moved to
+`media-originals/screenshots/` so the large file is never deployed. The
+"Screenshots" tab appears on the project card automatically. Commit the generated
+`.webp` file.
+
 ### CV download
 
 Put the PDF at **`public/cv-lewi-lucky-siagian.pdf`** and rebuild. The
