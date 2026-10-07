@@ -89,9 +89,12 @@ with the project's name — e.g. `spmt.png` or
 `lucky mart.png` — then run `npm run dev`, `npm run build` or `npm run images`.
 It is resized to max 1600px, saved as WebP in `public/images/projects/`
 (e.g. `lucky-mart.webp`), and the original PNG is moved to
-`media-originals/screenshots/` so the large file is never deployed. The
-"Screenshots" tab appears on the project card automatically. Commit the generated
-`.webp` file.
+`media-originals/screenshots/` so the large file is never deployed.
+
+Then list it under the project's `screenshots` in `src/data/portfolio.json`
+(`{ "file": "lucky-mart.webp", "alt": "...", "caption": "..." }`; add
+`"fit": "contain"` for portrait phone screenshots). It shows on the project card,
+next to the summary. Commit the generated `.webp` file.
 
 ### CV download
 
