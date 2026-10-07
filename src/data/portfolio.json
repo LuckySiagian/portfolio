@@ -421,7 +421,15 @@
             ]
           }
         ]
-      }
+      },
+      "screenshots": [
+        {
+          "file": "iot-coffee.webp",
+          "alt": "Login screen of the Fermentation Coffee mobile app",
+          "caption": "Flutter mobile app — login screen",
+          "fit": "contain"
+        }
+      ]
     },
     {
       "tier": "featured",

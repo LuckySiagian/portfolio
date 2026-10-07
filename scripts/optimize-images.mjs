@@ -1,5 +1,5 @@
-// Turns screenshots dropped into public/ or public/images/ (e.g. "spmt.png",
-// "lucky mart.png")
+// Turns screenshots dropped into public/, public/images/ or
+// public/images/projects/ (e.g. "spmt.png", "lucky mart.png")
 // into small WebP files in public/images/projects/, then moves the original
 // out of public/ into media-originals/screenshots/ (git-ignored) so the big
 // file is never deployed.
@@ -26,7 +26,8 @@ const slugify = (name) =>
     .replace(/^-+|-+$/g, "");
 
 export async function optimizeImages({ log = console.log } = {}) {
-  // public/*.png|jpg|jpeg and public/images/*.png (og-image.jpg there is left alone).
+  // public/*.png|jpg|jpeg, public/images/*.png (og-image.jpg there is left alone)
+  // and public/images/projects/*.png|jpg|jpeg.
   const imagesDir = join(publicDir, "images");
   const pick = (dir, exts) =>
     existsSync(dir)
@@ -34,7 +35,11 @@ export async function optimizeImages({ log = console.log } = {}) {
           .filter((d) => d.isFile() && exts.has(extname(d.name).toLowerCase()))
           .map((d) => join(dir, d.name))
       : [];
-  const sources = [...pick(publicDir, SOURCE_EXT), ...pick(imagesDir, new Set([".png"]))];
+  const sources = [
+    ...pick(publicDir, SOURCE_EXT),
+    ...pick(imagesDir, new Set([".png"])),
+    ...pick(outDir, SOURCE_EXT),
+  ];
 
   if (sources.length === 0) return [];
 

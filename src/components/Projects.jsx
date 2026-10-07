@@ -173,7 +173,9 @@ function ScreenshotPreview({ project }) {
                 alt={shot.alt}
                 loading="lazy"
                 decoding="async"
-                className="aspect-video w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
+                className={`aspect-video w-full transition-transform duration-500 motion-safe:group-hover:scale-[1.02] ${
+                  shot.fit === "contain" ? "object-contain" : "object-cover object-top"
+                }`}
               />
             </button>
             {shot.caption && (

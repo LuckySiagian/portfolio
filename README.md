@@ -84,7 +84,8 @@ data — no image needed.
 
 ### Project screenshots
 
-Drop a screenshot into `public/` with the project's name — `spmt.png` or
+Drop a screenshot into `public/`, `public/images/` or `public/images/projects/`
+with the project's name — e.g. `spmt.png` or
 `lucky mart.png` — then run `npm run dev`, `npm run build` or `npm run images`.
 It is resized to max 1600px, saved as WebP in `public/images/projects/`
 (e.g. `lucky-mart.webp`), and the original PNG is moved to
