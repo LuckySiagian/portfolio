@@ -2,7 +2,7 @@ import React, { useId, useRef, useState } from "react";
 import SectionHeading from "./ui/SectionHeading.jsx";
 import Tag from "./ui/Tag.jsx";
 import ArchitectureDiagram from "./ui/ArchitectureDiagram.jsx";
-import Lightbox from "./ui/Lightbox.jsx";
+import ScreenshotCarousel from "./ui/ScreenshotCarousel.jsx";
 import { ArrowUpRightIcon, GitHubIcon, LockIcon } from "./ui/Icons.jsx";
 import { usePortfolio } from "../context/PortfolioContext.jsx";
 
@@ -153,50 +153,6 @@ function ProjectTabs({ project }) {
   );
 }
 
-function ScreenshotPreview({ project }) {
-  const [openIndex, setOpenIndex] = useState(null);
-  const shots = project.screenshots;
-
-  return (
-    <>
-      <ul className={`grid gap-3 ${shots.length > 1 ? "grid-cols-2" : ""}`}>
-        {shots.map((shot, i) => (
-          <li key={shot.src}>
-            <button
-              type="button"
-              onClick={() => setOpenIndex(i)}
-              className="group block w-full overflow-hidden rounded-xl border border-line bg-slate-950 text-left transition-colors hover:border-cyan/50"
-              aria-label={`View larger: ${shot.alt}`}
-            >
-              <img
-                src={shot.src}
-                alt={shot.alt}
-                loading="lazy"
-                decoding="async"
-                className={`aspect-video w-full transition-transform duration-500 motion-safe:group-hover:scale-[1.02] ${
-                  shot.fit === "contain" ? "object-contain" : "object-cover object-top"
-                }`}
-              />
-            </button>
-            {shot.caption && (
-              <p className="mt-2 font-mono text-xs text-faint">
-                {shot.caption} <span className="text-faint/80">· click to enlarge</span>
-              </p>
-            )}
-          </li>
-        ))}
-      </ul>
-      <Lightbox
-        open={openIndex !== null}
-        onClose={() => setOpenIndex(null)}
-        images={shots}
-        startIndex={openIndex ?? 0}
-        title={project.title}
-      />
-    </>
-  );
-}
-
 function OverviewPanel({ project }) {
   const blocks = [
     { label: "Problem", text: project.problem },
@@ -288,7 +244,7 @@ function DetailProjectCard({ project }) {
           </div>
         </div>
 
-        {hasShots && <ScreenshotPreview project={project} />}
+        {hasShots && <ScreenshotCarousel shots={project.screenshots} title={project.title} />}
       </div>
 
       <ProjectTabs project={project} />

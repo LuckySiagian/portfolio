@@ -424,9 +424,21 @@
       },
       "screenshots": [
         {
+          "file": "iot-2.webp",
+          "alt": "Real-time chart of pH, temperature and humidity in the Fermentation Coffee mobile app",
+          "caption": "Real-time chart of pH, temperature and humidity",
+          "fit": "contain"
+        },
+        {
+          "file": "iot-3.webp",
+          "alt": "Live temperature and humidity gauges in the Fermentation Coffee mobile app",
+          "caption": "Live temperature and humidity gauges",
+          "fit": "contain"
+        },
+        {
           "file": "iot-coffee.webp",
           "alt": "Login screen of the Fermentation Coffee mobile app",
-          "caption": "Flutter mobile app — login screen",
+          "caption": "Login screen",
           "fit": "contain"
         }
       ]
