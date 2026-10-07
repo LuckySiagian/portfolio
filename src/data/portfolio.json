@@ -1,0 +1,601 @@
+{
+  "profile": {
+    "name": "Lewi Lucky Siagian",
+    "initials": "LL",
+    "avatar": "/images/profile.webp",
+    "eyebrow": "Fresh Graduate · D3 Computer Technology, Institut Teknologi Del",
+    "headline": "Full-Stack Developer focused on Web Applications, Backend Systems & Monitoring Tools.",
+    "intro": "I like building software that is reliable and solves real problems. During my internship I built a real-time website monitoring platform, my thesis was an IoT system, and I'm now building Lucky Mart, an ordering platform for my family's grocery store. I keep growing as a full-stack and backend developer with a strong interest in DevOps.",
+    "currently": "Previously IT Intern at PT Pelindo Multi Terminal (Feb – Jul 2026)",
+    "location": "Silimbat, Toba, North Sumatra, Indonesia",
+    "email": "luckysiagian2004@gmail.com",
+    "github": "https://github.com/LuckySiagian",
+    "linkedin": "https://www.linkedin.com/in/lewi-lucky-siagian-185573319",
+    "resumeUrl": "/cv-lewi-lucky-siagian.pdf"
+  },
+  "navLinks": [
+    {
+      "label": "Home",
+      "href": "#top"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects"
+    },
+    {
+      "label": "Experience",
+      "href": "#experience"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "about": {
+    "headline": "Fresh graduate in Computer Technology from Institut Teknologi Del",
+    "body": [
+      "I'm a fresh graduate of the D3 Computer Technology program at Institut Teknologi Del. I'm most interested in software development — especially full-stack development and backend engineering — and I'm currently building my skills in DevOps.",
+      "I enjoy learning new things, sharpening my problem-solving through projects, and building applications that solve real problems. I adapt quickly and I'm comfortable working and communicating in a team."
+    ],
+    "education": "Diploma in Computer Technology · GPA 3.31 / 4.00 · 2023 – 2026",
+    "focusAreas": [
+      {
+        "label": "Full-Stack Development",
+        "detail": "React frontends backed by Go APIs"
+      },
+      {
+        "label": "Backend Engineering",
+        "detail": "REST APIs, WebSocket, PostgreSQL"
+      },
+      {
+        "label": "Monitoring Systems",
+        "detail": "Health checks, alerting, real-time dashboards"
+      },
+      {
+        "label": "DevOps (learning)",
+        "detail": "Docker, Linux, Git, Prometheus basics"
+      }
+    ]
+  },
+  "skillGroups": [
+    {
+      "title": "Programming",
+      "items": [
+        {
+          "name": "Go",
+          "note": "Backend services, APIs, monitoring workers"
+        },
+        {
+          "name": "JavaScript",
+          "note": "Frontend logic and React apps"
+        },
+        {
+          "name": "HTML",
+          "note": "Page structure and semantic markup"
+        },
+        {
+          "name": "CSS",
+          "note": "Responsive layouts and styling"
+        }
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": [
+        {
+          "name": "React",
+          "note": "Monitoring dashboard and interactive UI"
+        },
+        {
+          "name": "Vite",
+          "note": "Dev server and build tooling"
+        },
+        {
+          "name": "Tailwind CSS",
+          "note": "Utility-first styling (this site)"
+        }
+      ]
+    },
+    {
+      "title": "Backend & API",
+      "items": [
+        {
+          "name": "Go",
+          "note": "HTTP services with chi and Gin"
+        },
+        {
+          "name": "Node.js",
+          "note": "JavaScript runtime and tooling"
+        },
+        {
+          "name": "REST API",
+          "note": "JSON APIs with JWT-protected routes"
+        },
+        {
+          "name": "WebSocket",
+          "note": "Real-time status updates"
+        }
+      ]
+    },
+    {
+      "title": "Database",
+      "items": [
+        {
+          "name": "PostgreSQL",
+          "note": "Application and monitoring data storage"
+        }
+      ]
+    },
+    {
+      "title": "DevOps & Tools",
+      "items": [
+        {
+          "name": "Docker",
+          "note": "Containerized PostgreSQL and services for local development"
+        },
+        {
+          "name": "Linux / CLI",
+          "note": "Development environment and server basics"
+        },
+        {
+          "name": "Git",
+          "note": "Version control"
+        },
+        {
+          "name": "GitHub",
+          "note": "Personal repositories"
+        },
+        {
+          "name": "Bitbucket",
+          "note": "Team repository during internship"
+        }
+      ]
+    },
+    {
+      "title": "Monitoring & Integration",
+      "items": [
+        {
+          "name": "Prometheus",
+          "note": "Exposing service metrics from a Go backend"
+        },
+        {
+          "name": "Telegram Bot",
+          "note": "Downtime and recovery alerts"
+        },
+        {
+          "name": "Email Alerting",
+          "note": "Scheduled uptime reports over SMTP"
+        },
+        {
+          "name": "MQTT",
+          "note": "ESP32 telemetry and control commands"
+        }
+      ]
+    }
+  ],
+  "skillsNote": "Still learning every day — currently going deeper into system design and DevOps practices.",
+  "projects": [
+    {
+      "tier": "main",
+      "title": "Website Monitoring Control Panel",
+      "org": "PT Pelindo Multi Terminal",
+      "category": "Professional / Internship Project",
+      "year": "2026",
+      "status": "Built during internship",
+      "role": "IT Intern — backend & frontend development",
+      "summary": "A real-time platform that monitors website availability and service health using layered checks, with a live dashboard and incident alerts.",
+      "problem": "The team needed one central place to see whether websites and services were healthy, instead of checking each one manually.",
+      "solution": "I built a monitoring platform that runs scheduled DNS, ICMP, TCP, TLS/SSL and HTTP checks in the background, stores the results in PostgreSQL, and pushes status changes to a React dashboard over WebSocket.",
+      "outcome": "The team gets a single dashboard showing service status in real time, Telegram alerts when a site goes down or recovers, and a weekly uptime report by email.",
+      "facts": [
+        {
+          "label": "Check layers",
+          "value": "DNS · ICMP · TCP · TLS · HTTP"
+        },
+        {
+          "label": "Status levels",
+          "value": "Online · Warning · Critical · Offline"
+        },
+        {
+          "label": "User roles",
+          "value": "Viewer · Admin · Superadmin"
+        }
+      ],
+      "features": [
+        "DNS resolution check",
+        "ICMP / ping reachability",
+        "TCP connectivity check",
+        "TLS / SSL handshake check",
+        "SSL certificate expiry tracking",
+        "HTTP status monitoring",
+        "Response time with slow-response thresholds",
+        "Scheduled background checks (worker pool)",
+        "Real-time status updates over WebSocket",
+        "Anti-flapping: 3 failed samples before marking down",
+        "Telegram alerts for downtime and recovery",
+        "Weekly uptime report by email (SMTP)",
+        "Incident management: acknowledge, assign, resolve",
+        "Maintenance windows and activity log",
+        "JWT authentication",
+        "Role-based access control",
+        "Network topology view",
+        "Monitoring dashboard with response-time graphs",
+        "Prometheus /metrics endpoint",
+        "Daily aggregates for uptime / SLA reports"
+      ],
+      "contributions": [
+        "Built backend monitoring services in Go (chi router) with REST endpoints for websites, logs, incidents, users and dashboard data.",
+        "Implemented scheduled background health checks using per-site tickers and a goroutine worker pool.",
+        "Implemented WebSocket-based real-time status updates to the dashboard.",
+        "Stored check results, status events and incidents in PostgreSQL, managed with versioned SQL migrations.",
+        "Built the React dashboard for operational visibility: status panels, response-time graphs and a topology view.",
+        "Integrated Telegram and email notification workflows, with anti-flapping to avoid false alarms.",
+        "Added JWT authentication with role-based access and exposed Prometheus metrics from the backend.",
+        "Wrote Go unit tests for status classification and notification formatting."
+      ],
+      "tags": [
+        "Go",
+        "chi",
+        "React",
+        "Vite",
+        "PostgreSQL",
+        "WebSocket",
+        "JWT",
+        "Prometheus",
+        "Telegram Bot API"
+      ],
+      "githubUrl": "https://github.com/LuckySiagian/spmt-monitoring",
+      "demoUrl": "",
+      "architecture": {
+        "flows": [
+          {
+            "title": "Monitoring flow",
+            "nodes": [
+              {
+                "label": "React Dashboard",
+                "detail": "Status panels · graphs · topology"
+              },
+              {
+                "label": "REST API / WebSocket",
+                "detail": "chi router · JWT · RBAC"
+              },
+              {
+                "label": "Go Backend",
+                "detail": "Services · scheduler"
+              },
+              {
+                "label": "Monitoring Workers",
+                "detail": "Per-site tickers · goroutine pool"
+              },
+              {
+                "label": "Health Checks",
+                "items": [
+                  "DNS",
+                  "ICMP",
+                  "TCP",
+                  "TLS/SSL",
+                  "HTTP"
+                ]
+              },
+              {
+                "label": "PostgreSQL",
+                "detail": "Check logs · status events · incidents"
+              }
+            ]
+          },
+          {
+            "title": "Alerting flow",
+            "nodes": [
+              {
+                "label": "Go Backend",
+                "detail": "Status change detected"
+              },
+              {
+                "label": "Notifications",
+                "items": [
+                  "Telegram · down / recovery",
+                  "Email · weekly report"
+                ]
+              }
+            ],
+            "note": "Backend metrics are exposed at /metrics for Prometheus."
+          }
+        ]
+      }
+    },
+    {
+      "tier": "featured",
+      "title": "IoT Coffee Fermentation Monitoring & Control System",
+      "org": "Institut Teknologi Del",
+      "category": "Academic / Thesis Project",
+      "year": "2026",
+      "status": "Thesis prototype (team project)",
+      "role": "Thesis team member — device firmware, sensor testing",
+      "summary": "An IoT system that monitors and controls coffee fermentation using an ESP32, environmental sensors, actuators, MQTT communication and a mobile app.",
+      "problem": "Coffee fermentation depends on keeping temperature, humidity and pH in the right range. Checking it by hand is slow and easy to get wrong.",
+      "solution": "An ESP32-based device reads temperature, humidity and pH, switches a heater lamp, fan, humidifier and solenoid valve through relays, and publishes data over MQTT. Node-RED stores the data in InfluxDB and MySQL, and a Flutter app shows it and sends control commands back.",
+      "outcome": "A working prototype tested in the thesis: sensors were checked against reference instruments, and fermentation sessions could be started, monitored and stopped from the mobile app.",
+      "features": [
+        "Temperature monitoring",
+        "Humidity monitoring",
+        "pH monitoring",
+        "Automated control based on target conditions",
+        "Heating control (heater lamp)",
+        "Fan control",
+        "Humidifier control",
+        "Solenoid valve control",
+        "MQTT communication (Mosquitto)",
+        "Data logging to InfluxDB and MySQL",
+        "Mobile monitoring and control (Flutter)",
+        "Real-time charts in the app and Grafana",
+        "RTC timestamps and LCD status display"
+      ],
+      "contributions": [
+        "Worked on the ESP32 firmware: reading sensors, driving relays and publishing data over MQTT.",
+        "Tested and calibrated the pH and temperature / humidity sensors against reference instruments.",
+        "Helped integrate the device with the MQTT broker, Node-RED and the mobile app.",
+        "Contributed to the Flutter app for real-time monitoring and control."
+      ],
+      "tags": [
+        "ESP32",
+        "Arduino (C++)",
+        "MQTT",
+        "Node-RED",
+        "InfluxDB",
+        "MySQL",
+        "Flutter",
+        "Grafana",
+        "pH Sensor",
+        "SHT20",
+        "RTC",
+        "Relay"
+      ],
+      "githubUrl": "",
+      "demoUrl": "",
+      "linkNote": "No public repository",
+      "architecture": {
+        "flows": [
+          {
+            "title": "Data flow",
+            "nodes": [
+              {
+                "label": "Sensors",
+                "items": [
+                  "Temperature / Humidity (SHT20)",
+                  "pH",
+                  "RTC"
+                ]
+              },
+              {
+                "label": "ESP32",
+                "detail": "Reads sensors · runs control logic"
+              },
+              {
+                "label": "MQTT Broker",
+                "detail": "Mosquitto"
+              },
+              {
+                "label": "Node-RED",
+                "detail": "InfluxDB · MySQL"
+              },
+              {
+                "label": "Monitoring / Mobile App",
+                "detail": "Flutter app · Grafana"
+              }
+            ]
+          },
+          {
+            "title": "Control flow",
+            "nodes": [
+              {
+                "label": "ESP32",
+                "detail": "Commands from app or thresholds"
+              },
+              {
+                "label": "Relay Module"
+              },
+              {
+                "label": "Actuators",
+                "items": [
+                  "Heater",
+                  "Fan",
+                  "Humidifier",
+                  "Solenoid"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tier": "featured",
+      "title": "Lucky Mart – Grocery Ordering Platform",
+      "org": "Personal Project",
+      "category": "Personal Project",
+      "year": "2026",
+      "status": "In development — not deployed yet",
+      "role": "Full-stack developer (solo)",
+      "summary": "A full-stack ordering platform I'm building for my parents' grocery store, covering products, inventory, cart, checkout, orders, shipping, payments and customer credit.",
+      "problem": "My parents run a grocery store. Orders, stock and customers who buy on credit are tracked by hand. I started Lucky Mart to bring that into one system, and to apply what I learned at Institut Teknologi Del to a real need.",
+      "solution": "A Go (Gin) REST API with a layered structure (handlers → services → repositories with GORM) on PostgreSQL, used by two React + TypeScript apps: a customer web store and an admin dashboard for the store. Local services run with Docker Compose.",
+      "outcome": "The backend core and 80+ REST endpoints are in place, and both frontends are being finished. Next step: preparing it for hosting so the store can actually use it.",
+      "features": [
+        "Product catalog (categories, brands, units)",
+        "Inventory and stock movements",
+        "Shopping cart",
+        "Checkout",
+        "Order management and history",
+        "Shipping methods, rates and tracking",
+        "Payment methods and transactions",
+        "Customer credit / ledger",
+        "Notifications with templates",
+        "JWT auth with access and refresh tokens"
+      ],
+      "contributions": [
+        "Designed the database models and the layered Go backend.",
+        "Built REST endpoints for products, cart, orders, payments, shipping and customer credit.",
+        "Building a customer web store and an admin dashboard (inventory, stock movements, orders, payments, credit ledger) in React + TypeScript.",
+        "Set up Docker Compose for PostgreSQL, the backend and supporting services.",
+        "Work in progress: GitHub Actions CI workflow, Prometheus / Grafana config and k6 load-test script."
+      ],
+      "tags": [
+        "Go",
+        "Gin",
+        "PostgreSQL",
+        "React",
+        "TypeScript",
+        "Docker"
+      ],
+      "githubUrl": "",
+      "demoUrl": "",
+      "linkNote": "Repository not public yet",
+      "architecture": {
+        "flows": [
+          {
+            "title": "Application flow",
+            "nodes": [
+              {
+                "label": "Web Apps",
+                "items": [
+                  "Customer web store",
+                  "Admin dashboard"
+                ]
+              },
+              {
+                "label": "REST API",
+                "detail": "Go · Gin · JWT"
+              },
+              {
+                "label": "Services & Repositories",
+                "detail": "Business logic · GORM"
+              },
+              {
+                "label": "PostgreSQL"
+              }
+            ],
+            "note": "Runs locally with Docker Compose."
+          }
+        ]
+      }
+    },
+    {
+      "tier": "other",
+      "title": "E-Commerce Website – Ijabu Coffee Shop",
+      "category": "Academic Project",
+      "year": "2024",
+      "summary": "Online store for a coffee roastery in Balige: product catalog, cart and order submission for customers, plus an admin dashboard for products and transactions with image upload.",
+      "tags": [
+        "Laravel",
+        "PHP",
+        "MySQL"
+      ],
+      "githubUrl": "https://github.com/LuckySiagian/ijabu-coffee-shop",
+      "demoUrl": ""
+    },
+    {
+      "tier": "other",
+      "title": "CRUD Web Application – Inventory & Borrowing System",
+      "category": "Academic Project",
+      "year": "2024",
+      "summary": "Web app for borrowing equipment from a computer lab, with full CRUD for items and loans, user authentication, an activity log and a responsive UI.",
+      "tags": [],
+      "githubUrl": "",
+      "demoUrl": "",
+      "linkNote": "No public repository"
+    },
+    {
+      "tier": "other",
+      "title": "Toyota Company Profile Website",
+      "category": "Web Project",
+      "year": "2023",
+      "summary": "Static company profile website built with WordPress. Customized the layout and components to match the brand and made it work well on mobile.",
+      "tags": [
+        "WordPress"
+      ],
+      "githubUrl": "",
+      "demoUrl": "",
+      "linkNote": "No public repository"
+    }
+  ],
+  "experience": [
+    {
+      "role": "IT Intern · Junior Developer",
+      "org": "PT Pelindo Multi Terminal",
+      "period": "Feb 2026 – Jul 2026",
+      "type": "Internship",
+      "summary": "Built a website availability monitoring platform that helps the team watch service health in real time. The system checks indicators such as DNS, ICMP/ping, TCP connectivity, TLS/SSL, HTTP status, response time and incident conditions.",
+      "bullets": [
+        "Developed backend monitoring logic and scheduled health checks across multiple protocols.",
+        "Built an operational dashboard for clear and fast service-status visibility.",
+        "Implemented Telegram and email notification workflows for monitoring incidents.",
+        "Designed the monitoring status presentation to help the team understand service health quickly."
+      ],
+      "tags": [
+        "Go",
+        "React",
+        "PostgreSQL",
+        "WebSocket",
+        "Bitbucket"
+      ],
+      "photo": {
+        "src": "/images/internship-team.webp",
+        "alt": "Lewi with colleagues in front of the monitoring screens at PT Pelindo Multi Terminal",
+        "caption": "With the team at PT Pelindo Multi Terminal, 2026",
+        "width": 1400,
+        "height": 1867
+      },
+      "location": "Belawan, North Sumatra"
+    }
+  ],
+  "education": {
+    "school": "Institut Teknologi Del",
+    "degree": "Diploma (D3) in Computer Technology",
+    "period": "Aug 2023 – Sep 2026",
+    "gpa": "3.31 / 4.00",
+    "location": "Toba, North Sumatra",
+    "note": "Thesis: IoT-based monitoring and control system for coffee fermentation."
+  },
+  "organizations": [
+    {
+      "role": "Foster Brother / Mentor for New Students",
+      "org": "New Student Mentorship Program · Institut Teknologi Del",
+      "period": "Aug 2024 – Sep 2025",
+      "summary": "A student mentorship program supporting new students in adapting to academic and campus life.",
+      "bullets": [
+        "Mentored 10+ freshmen in adapting to academic and campus life.",
+        "Provided guidance on study habits, time management, and campus activities.",
+        "Helped new students gain confidence and integrate smoothly."
+      ]
+    },
+    {
+      "role": "Member, Department of Sports",
+      "org": "Computer Technology Student Association · Institut Teknologi Del",
+      "period": "Nov 2024 – Nov 2025",
+      "summary": "A student association department responsible for organizing sports activities and promoting student participation in campus events.",
+      "bullets": [
+        "Organized 5+ sports events involving more than 200 students.",
+        "Collaborated with 8 committee members to coordinate event logistics.",
+        "Supported initiatives that increased student participation in sports activities."
+      ]
+    }
+  ],
+  "contact": {
+    "headline": "Open to junior roles",
+    "body": "Open to junior software engineering opportunities, particularly Full-Stack Development, Backend Engineering, and DevOps-related roles. If you think I could be a good fit, I'd be glad to hear from you.",
+    "roles": [
+      "Full-Stack Developer",
+      "Backend Developer",
+      "Junior Software Engineer",
+      "Junior DevOps / DevOps-related roles"
+    ]
+  }
+}

@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/* Full-size source photos are not part of the site. */
+@source not "../media-originals";
+
+/* ============================================================================
+   THEME TOKENS (Tailwind v4 CSS-first config)
+   Soft, rich dark slate palette (not pitch black) + cyan & violet accents.
+   ========================================================================== */
+@theme {
+  /* Surfaces (Softened, comfortable Slate dark default) */
+  --color-canvas: #0f172a; /* Slate 900 page background (soft & smooth) */
+  --color-surface: #1e293b; /* Slate 800 cards & panels */
+  --color-surface-2: #334155; /* Slate 700 nested panels */
+  --color-line: #334155; /* Hairline borders */
+
+  /* Text */
+  --color-ink: #f8fafc; /* Slate 50 primary text */
+  --color-muted: #cbd5e1; /* Slate 300 secondary text */
+  --color-faint: #94a3b8; /* Slate 400 tertiary text */
+
+  /* Accents — cyan + violet */
+  --color-cyan: #22d3ee;
+  --color-cyan-soft: #67e8f9;
+  --color-violet: #a78bfa;
+  --color-violet-soft: #c4b5fd;
+  --color-ok: #34d399; /* status: healthy */
+  --color-warn: #fbbf24; /* status: degraded */
+
+  /* Typography */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.4s ease-in-out infinite;
+  --animate-sweep: sweep 3.2s linear infinite;
+  --animate-blink: blink 1.6s ease-in-out infinite;
+  --animate-grid-pan: grid-pan 8s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+/* ----------------------------------------------------------------------------
+   LIGHT THEME OVERRIDES
+   -------------------------------------------------------------------------- */
+html.light {
+  --color-canvas: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f9;
+  --color-line: #e2e8f0;
+
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+  --color-faint: #64748b;
+
+  --color-cyan: #0891b2;
+  --color-cyan-soft: #06b6d4;
+  --color-violet: #7c3aed;
+  --color-violet-soft: #8b5cf6;
+  --color-ok: #059669;
+  --color-warn: #d97706;
+}
+
+/* Grid backdrop line color adapts to the active theme. */
+:root {
+  --grid-line: rgba(255, 255, 255, 0.06);
+}
+html.light {
+  --grid-line: rgba(15, 23, 42, 0.06);
+}
+
+/* ----------------------------------------------------------------------------
+   Keyframes
+   -------------------------------------------------------------------------- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes pulse-ring {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0);
+  }
+}
+@keyframes sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(900%);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes grid-pan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 48px 48px;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   SCROLL REVEAL
+   Only transform + opacity are animated (cheap to composite). The hidden
+   state applies only once JS has marked <html> with .js-reveal, so content
+   stays visible if scripts fail, and never for reduced-motion users.
+   -------------------------------------------------------------------------- */
+.js-reveal [data-reveal],
+.js-reveal [data-reveal-left],
+.js-reveal [data-reveal-right],
+.js-reveal [data-reveal-zoom] {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal [data-reveal] {
+  transform: translateY(32px);
+}
+
+.js-reveal [data-reveal-left] {
+  transform: translateX(-40px);
+}
+
+.js-reveal [data-reveal-right] {
+  transform: translateX(40px);
+}
+
+.js-reveal [data-reveal-zoom] {
+  transform: scale(0.94);
+}
+
+.js-reveal .reveal-active[data-reveal],
+.js-reveal .reveal-active[data-reveal-left],
+.js-reveal .reveal-active[data-reveal-right],
+.js-reveal .reveal-active[data-reveal-zoom] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Base layer
+   -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  ::selection {
+    background: var(--color-cyan);
+    color: var(--color-canvas);
+  }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
