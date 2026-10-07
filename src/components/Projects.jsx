@@ -8,7 +8,6 @@ import { usePortfolio } from "../context/PortfolioContext.jsx";
 
 const TABS = [
   { id: "overview", label: "Overview" },
-  { id: "screenshots", label: "Screenshots" },
   { id: "architecture", label: "Architecture" },
   { id: "features", label: "Features" },
   { id: "contribution", label: "My contribution" },
@@ -59,7 +58,6 @@ function ProjectTabs({ project }) {
   const tabRefs = useRef([]);
   const tabs = TABS.filter((t) => {
     if (t.id === "architecture") return Boolean(project.architecture);
-    if (t.id === "screenshots") return project.screenshots?.length > 0;
     return true;
   });
 
@@ -119,7 +117,6 @@ function ProjectTabs({ project }) {
           className="pt-5 focus-visible:outline-none"
         >
           {tab.id === "overview" && <OverviewPanel project={project} />}
-          {tab.id === "screenshots" && <ScreenshotsPanel project={project} />}
           {tab.id === "architecture" && (
             <ArchitectureDiagram architecture={project.architecture} title={project.title} />
           )}
@@ -156,13 +153,13 @@ function ProjectTabs({ project }) {
   );
 }
 
-function ScreenshotsPanel({ project }) {
+function ScreenshotPreview({ project }) {
   const [openIndex, setOpenIndex] = useState(null);
   const shots = project.screenshots;
 
   return (
     <>
-      <ul className={`grid gap-4 ${shots.length > 1 ? "sm:grid-cols-2" : ""}`}>
+      <ul className={`grid gap-3 ${shots.length > 1 ? "grid-cols-2" : ""}`}>
         {shots.map((shot, i) => (
           <li key={shot.src}>
             <button
@@ -179,7 +176,11 @@ function ScreenshotsPanel({ project }) {
                 className="aspect-video w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
               />
             </button>
-            {shot.caption && <p className="mt-2 font-mono text-xs text-faint">{shot.caption}</p>}
+            {shot.caption && (
+              <p className="mt-2 font-mono text-xs text-faint">
+                {shot.caption} <span className="text-faint/80">· click to enlarge</span>
+              </p>
+            )}
           </li>
         ))}
       </ul>
@@ -230,6 +231,7 @@ function OverviewPanel({ project }) {
 
 function DetailProjectCard({ project }) {
   const isMain = project.tier === "main";
+  const hasShots = project.screenshots?.length > 0;
 
   return (
     <article
@@ -240,45 +242,51 @@ function DetailProjectCard({ project }) {
       }`}
       data-reveal
     >
-      <div className="flex flex-wrap items-center gap-2">
-        {isMain && (
-          <span className="rounded-full border border-cyan/40 bg-cyan/10 px-2.5 py-0.5 font-mono text-[11px] font-bold text-cyan">
-            Main project
-          </span>
-        )}
-        <span className="rounded-full border border-line bg-canvas/60 px-2.5 py-0.5 font-mono text-[11px] text-muted">
-          {project.category}
-        </span>
-        <span className="font-mono text-xs text-faint">
-          {project.year}
-          {project.status && <> · {project.status}</>}
-        </span>
-      </div>
+      <div className={hasShots ? "grid gap-6 lg:grid-cols-[1fr_1.05fr] lg:items-start" : ""}>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            {isMain && (
+              <span className="rounded-full border border-cyan/40 bg-cyan/10 px-2.5 py-0.5 font-mono text-[11px] font-bold text-cyan">
+                Main project
+              </span>
+            )}
+            <span className="rounded-full border border-line bg-canvas/60 px-2.5 py-0.5 font-mono text-[11px] text-muted">
+              {project.category}
+            </span>
+            <span className="font-mono text-xs text-faint">
+              {project.year}
+              {project.status && <> · {project.status}</>}
+            </span>
+          </div>
 
-      <h3
-        className={`mt-3 font-display font-semibold leading-tight text-ink ${
-          isMain ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
-        }`}
-      >
-        {project.title}
-        {project.org && project.tier === "main" && (
-          <span className="text-muted"> – {project.org}</span>
-        )}
-      </h3>
+          <h3
+            className={`mt-3 font-display font-semibold leading-tight text-ink ${
+              isMain ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
+            }`}
+          >
+            {project.title}
+            {project.org && project.tier === "main" && (
+              <span className="text-muted"> – {project.org}</span>
+            )}
+          </h3>
 
-      <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted">{project.summary}</p>
+          <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted">{project.summary}</p>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-        {project.tags?.length > 0 && (
-          <ul className="flex flex-wrap gap-2" aria-label="Tech stack">
-            {project.tags.map((tag) => (
-              <li key={tag}>
-                <Tag>{tag}</Tag>
-              </li>
-            ))}
-          </ul>
-        )}
-        <ProjectLinks project={project} />
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+            {project.tags?.length > 0 && (
+              <ul className="flex flex-wrap gap-2" aria-label="Tech stack">
+                {project.tags.map((tag) => (
+                  <li key={tag}>
+                    <Tag>{tag}</Tag>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <ProjectLinks project={project} />
+          </div>
+        </div>
+
+        {hasShots && <ScreenshotPreview project={project} />}
       </div>
 
       <ProjectTabs project={project} />
