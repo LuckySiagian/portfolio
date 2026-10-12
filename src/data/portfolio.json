@@ -49,7 +49,7 @@
     "focusAreas": [
       {
         "label": "Full-Stack Development",
-        "detail": "React frontends backed by Go APIs"
+        "detail": "React frontends backed by Go and Django APIs"
       },
       {
         "label": "Backend Engineering",
@@ -84,6 +84,14 @@
         {
           "name": "CSS",
           "note": "Responsive layouts and styling"
+        },
+        {
+          "name": "Python",
+          "note": "Django REST APIs and pytest"
+        },
+        {
+          "name": "TypeScript",
+          "note": "React apps and AWS CDK infrastructure"
         }
       ]
     },
@@ -101,6 +109,10 @@
         {
           "name": "Tailwind CSS",
           "note": "Utility-first styling (this site)"
+        },
+        {
+          "name": "TanStack Query",
+          "note": "Server state and caching in React"
         }
       ]
     },
@@ -122,6 +134,10 @@
         {
           "name": "WebSocket",
           "note": "Real-time status updates"
+        },
+        {
+          "name": "Django REST Framework",
+          "note": "APIs with roles, workflow and tests"
         }
       ]
     },
@@ -156,6 +172,14 @@
         {
           "name": "Bitbucket",
           "note": "Team repository during internship"
+        },
+        {
+          "name": "GitHub Actions",
+          "note": "CI: lint, tests, builds, Docker images"
+        },
+        {
+          "name": "AWS CDK (learning)",
+          "note": "Infrastructure as code, tested but not deployed yet"
         }
       ]
     },
@@ -177,6 +201,10 @@
         {
           "name": "MQTT",
           "note": "ESP32 telemetry and control commands"
+        },
+        {
+          "name": "Grafana",
+          "note": "Dashboards on Prometheus metrics"
         }
       ]
     }
@@ -517,6 +545,117 @@
           "file": "lucky-mart.webp",
           "alt": "Lucky Mart customer web store home page",
           "caption": "Customer web store — work in progress"
+        }
+      ]
+    },
+    {
+      "tier": "featured",
+      "title": "Lucky Mart Procurement Portal",
+      "org": "Personal Project",
+      "category": "Personal Project",
+      "year": "2026",
+      "status": "Runs locally — AWS infrastructure written with CDK, not deployed",
+      "role": "Full-stack developer (solo)",
+      "summary": "An internal portal for restocking my family's grocery store: staff create purchase orders to suppliers, the owner approves them, and received goods are added to Lucky Mart's stock automatically.",
+      "problem": "Restocking the store is tracked by hand: it is hard to see which supplier orders are still waiting for approval, and stock has to be updated manually when the goods arrive.",
+      "solution": "A Django REST Framework API with a purchase-order workflow (draft → submitted → approved/rejected → received) and a React + TypeScript frontend. It reads low-stock products from the Lucky Mart API to suggest what to reorder, and sends received quantities back as stock-in adjustments.",
+      "outcome": "The whole flow works end to end locally with Docker Compose, with 87 automated tests running in GitHub Actions. The AWS infrastructure (ECS Fargate, RDS, CloudFront, Cognito) is written and tested with the AWS CDK but not deployed yet.",
+      "facts": [
+        {
+          "label": "Order statuses",
+          "value": "Draft · Submitted · Approved · Rejected · Received"
+        },
+        {
+          "label": "Roles",
+          "value": "Staff · Owner"
+        },
+        {
+          "label": "Tests",
+          "value": "52 backend · 23 frontend · 12 infrastructure"
+        }
+      ],
+      "features": [
+        "Purchase-order workflow with an audit trail",
+        "Owner approval; nobody approves their own order",
+        "Reorder suggestions from Lucky Mart low stock",
+        "Stock-in sync to Lucky Mart with per-line retry",
+        "Supplier management",
+        "Dashboard of orders waiting for action",
+        "English / Indonesian language switch (UI and API messages)",
+        "Password change with Django password validation",
+        "JWT login, plus Amazon Cognito access tokens",
+        "Prometheus metrics and a Grafana dashboard"
+      ],
+      "contributions": [
+        "Designed the data model and put every status rule in one workflow module, with row locks so two approvals can't race.",
+        "Built the REST API with Django REST Framework: filtering, pagination, role-based permissions and translated error messages.",
+        "Wrote an HTTP client for the Lucky Mart Go API (login, token refresh, low stock, stock adjustments) and made the stock sync safe to retry.",
+        "Built the React + TypeScript frontend with TanStack Query, React Router and Tailwind CSS.",
+        "Added Amazon Cognito access-token verification (JWKS, RS256) next to the local Simple JWT login.",
+        "Wrote the AWS infrastructure in TypeScript with the AWS CDK and tested the synthesized template.",
+        "Set up GitHub Actions (lint, tests, build, Docker images, CDK synth), production Docker images and Prometheus / Grafana monitoring."
+      ],
+      "tags": [
+        "Python",
+        "Django",
+        "Django REST Framework",
+        "PostgreSQL",
+        "React",
+        "TypeScript",
+        "AWS CDK",
+        "Docker",
+        "GitHub Actions"
+      ],
+      "githubUrl": "https://github.com/LuckySiagian/lucky-mart-procurement",
+      "demoUrl": "",
+      "architecture": {
+        "flows": [
+          {
+            "title": "Application flow",
+            "nodes": [
+              {
+                "label": "React + TypeScript",
+                "detail": "Orders · suppliers · dashboard"
+              },
+              {
+                "label": "Django REST API",
+                "detail": "JWT / Cognito · roles · workflow"
+              },
+              {
+                "label": "PostgreSQL",
+                "detail": "Orders · items · audit events"
+              }
+            ]
+          },
+          {
+            "title": "Lucky Mart integration",
+            "nodes": [
+              {
+                "label": "Procurement Portal",
+                "detail": "Reorder suggestions · goods received"
+              },
+              {
+                "label": "Lucky Mart API",
+                "items": [
+                  "GET low stock",
+                  "POST stock in"
+                ]
+              }
+            ],
+            "note": "AWS (CDK, not deployed): CloudFront + S3, ECS Fargate, RDS, Cognito, Secrets Manager."
+          }
+        ]
+      },
+      "screenshots": [
+        {
+          "file": "procurement.webp",
+          "alt": "Purchase orders list with status filters and badges for draft, waiting for approval, approved and received orders",
+          "caption": "Purchase orders and their status"
+        },
+        {
+          "file": "procurement-history.webp",
+          "alt": "A received purchase order with its items and a history of who created, submitted, approved and received it",
+          "caption": "Order detail with its audit trail"
         }
       ]
     },
